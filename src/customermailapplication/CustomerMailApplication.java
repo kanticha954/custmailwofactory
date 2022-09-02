@@ -14,30 +14,35 @@ import java.util.Scanner;
  */
 public class CustomerMailApplication {
 
-    /**
-     * @param args the command line arguments
-     */
-    private Customer customer;
-    public void getCustomerTypeFromUser(String customerType) {
-        switch(customerType) {
-            case "Regular":
-                customer = new RegularCustomer();
+    private Customer cust;
+    public static Customer getCustomerTypeFromUser() {
+        Scanner inp = new Scanner(System.in);
+        System.out.print("Please choose customer type 1. Regular, 2. Mountain, 3. Delinquent ");
+        int type = inp.nextInt();
+        Customer cust = null;
+        switch(type) {
+            case 1:   
+                cust = CustomerFactory.createCustomer("Regular");
                 break;
-            case "Mountain":
-                customer = new MountainCustomer();
+            case 2:
+                cust = CustomerFactory.createCustomer("Mountain");
                 break;
-            case "Delinquent":
-                customer = new DelinquentCustomer();
+            case 3:
+                cust = CustomerFactory.createCustomer("Delinquent");
                 break;
+ 
         }
-    }
-    public String generateMail() {
-        return customer.createMail();
-    }
+            return cust;
+        }
+    
+    /*public String generateMail() {
+        return cust.createMail();
+    }*/
+    
     
     public static void main(String[] args) {
         CustomerMailApplication app = new CustomerMailApplication();
-        Scanner inp = new Scanner(System.in);
+        /*Scanner inp = new Scanner(System.in);
         System.out.print("Please choose customer type 1. Regular, 2. Mountain, 3. Delinquent ");
         int type = inp.nextInt();
         switch(type) {
@@ -51,7 +56,7 @@ public class CustomerMailApplication {
                 app.getCustomerTypeFromUser("Delinquent");
                 break;
             
-        }
-        System.out.println(app.generateMail());        
+        }*/
+        System.out.println(app.getCustomerTypeFromUser());        
     }
 }

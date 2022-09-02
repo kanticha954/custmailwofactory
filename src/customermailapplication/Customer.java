@@ -11,4 +11,10 @@ package customermailapplication;
  */
 public abstract class Customer { //make this class abstract
     public abstract String createMail(); //make this method abstract
+    /*@Override
+    public String toString(){
+        return "CreateMail ="+this.createMail();
+    }*/
+
+
 }
